@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parsons Data Visualization Thesis Projects and Research</title>
+
+  <link href="web/css/style.css" rel="stylesheet">
+  <link href="web/css/color.css" rel="stylesheet">
+  <link href="web/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <script>
+    // use preview images if available otherwise iframes directly
+    var usePreview = true;
+
+    $(document).ready(function() {
+      
+      // images
+      $("div .project").each(function() {
+        if ($(this).attr('href') != undefined) {
+
+          // scale
+          var str = "";
+          str += "<a href='#top'><span class='pull-right glyphicon glyphicon-chevron-up' data-toggle='tooltip' data-placement='left' title='top'></span></a>";
+          $(this).append(str);
+
+          // create text field to copy from
+          var iframe = "<input id='embed' type='text' class='collapse pull-right btn btn-default col-md-12' value='" +
+            $(this).find("p").html() +
+            "<iframe width=\"100%\" height=\"100%\" src=\"" + window.location.href + "/." + $(this).attr('href') + "\"></iframe>" +
+            "<a href=\"https://visualizedata.github.io/undp/\"><img style=\"width:200px !important\" src=\"" + window.location.href + "/../" + "web/img/ParsonsDataVisualization.png" + "\"></a>" +
+            "'>";
+          if ($(this).find("input").length == 0) {
+            $(this).append(iframe);
+          }
+
+          // add preview image when available
+          if (usePreview) {
+            $(this).append("<img data-toggle='tooltip' data-placement='left' title='launch project' width=\"100%\" src='" + $(this).attr('img-src') + "' target='_blank' onClick='window.open(\"" + $(this).attr('href') + "\")'>");
+            $(this).find("img").error(function() {
+              $(this).parent().append("<iframe width='100%' height='100%' src='" + $(this).parent().attr('href') +
+                "' frameborder='0' allowfullscreen></iframe>");
+              $(this).parent().find("img").remove();
+              $(this).parent().find(".title").remove();
+            });
+
+          }
+          else {
+            $(this).append("<iframe width='100%' height='566' src='" + $(this).attr('href') + "'></iframe>");
+          }
+        }
+      });
+
+      // index
+      $("h3").each(function(i) {
+        if (!$(this).hasClass("no-touch")) {
+          $("#index").append("<li><a href='#" + i + "'>" +
+            "<span class='glyphicon glyphicon-chevron-down'></span>  &nbsp;" +
+            $(this).text() + "</a><li>");
+          $(this).prepend("<a id='" + i + "'>");
+         }
+        else {
+          $("#index").append("<li class='no-touch'><a href='#" + i + "'>" +
+            "<span class='glyphicon glyphicon-chevron-down'></span>  &nbsp;" +
+            $(this).text() + "</a><li>");
+          $(this).prepend("<a id='" + i + "'>");
+        }
+      });
+      
+      // check for touch screens
+      var hasTouch = window.matchMedia('(pointer: coarse)').matches;
+      if (hasTouch) {
+        $(".no-touch").hide();
+      }
+      
+      // activate tooltip
+      $('[data-toggle="tooltip"]').tooltip();
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!--MENU-->
+    <div id="banner">
+      <div id="menu_button_wrapper">
+        <a href="#" id="menu_button" class="right-off-canvas-toggle menu-icon"><i class="fa fa-bars"></i></a>
+        <a href="#" id="search_button" class="right-off-canvas-toggle menu-icon"><i class="fa fa-search"></i></a>
+      </div>
+
+      <div id="site_lockup">
+        <h1 class="u_name col-md-12">
+          <a href="http://newschool.edu/">
+              <span class="font-width-1">T</span><span class="font-width-2">h</span><span class="font-width-1">e</span><span class="font-width-1">&nbsp;</span><span class="font-width-2">N</span><span class="font-width-1">e</span><span class="font-width-3">w</span><span class="font-width-1">&nbsp;</span><span class="font-width-1">S</span><span class="font-width-1">c</span><span class="font-width-2">h</span><span class="font-width-2">o</span><span class="font-width-2">o</span><span class="font-width-3">l</span>
+          </a>
+        </h1>
+        <div class="bottom-stripe col-md-12">
+          <div class="bottom-stripe-inner"></div>
+        </div>
+
+        <div id="stripe_menu" class="col-md-12">
+          <div id="inner-menu-stripe" class="bottom-stripe">
+            <div class="bottom-stripe-inner"></div>
+          </div>
+          <h1 class="sitename"><span class="font-width-3 kern-decrease-10"><a href="http://www.newschool.edu/parsons/ms-data-visualization/">Data Visualization</a></span></h1>
+        </div>
+        <div class="subtitle font-width-3 kern-decrease-10 col-md-10">
+          Thesis Projects and Research
+        </div>
+
+      </div>
+    </div>
+
+
+    <h2 class="col-md-10 col-md-offset-1">
+      This interdisciplinary graduate program brings together design, statistics, and computer science, developing critical abilities and facility for innovation in work settings in which data increasingly shapes opinion, policy, and decision-making.
+    </h2>
+
+    <!--YEAR-->
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <div class="font-width-3 col-md-12">
+      2016
+    </div>
+        
+    <!--INDEX-->
+    <div class="col-md-12 col-md-10 col-md-offset-1">
+      <ul id="index">
+        <!--dynamically generated-->
+      </ul>
+      <br />
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Barbara Compagnoni</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="barbara"></a>
+    <div href="barbaraCompagnoni/" img-src="content/barbaraCompagnoni.png" class="project col-md-12">
+      <p class=" col-md-2">
+        <span class="title">Feeling.it</span>
+      </p>
+      <p class="col-md-9">
+        How our bodies interpret data is the result of our brain processing the environment around us through our senses. The data collected from the environment triggers a response from the brain to different parts of the body. These physiological and psychological reactions become a unique series of signals and chain reactions controlled by the nervous system. These experiences become memories when data about the event is stored in the human brain. By collecting the environmental stimuli in its entirety, as well as the biometric data created by the electrical and chemical reactions communicating these responses throughout the body from the brain, we are able to evaluate the data without the influence of these filters. Each snapshot of intimate communication within our bodies is documented through the sensor readings of wearable technologies. These processors present biological data to the subject through the perceptions and realities created by the goals of the companies that produce these technologies. Feelin.it is an opportunity to share and compare this intimate data with others.
+      </p>
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12 no-touch">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12 no-touch">Justine Keller</h3>
+    <div class="bottom-stripe col-md-12 no-touch">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="justine"></a>
+    <div href="justineKeller/" img-src="content/justineKeller.png" class="project col-md-12 no-touch">
+      <p class=" col-md-2">
+        <span class="title">Leadership Gender Gap</span>
+      </p>
+      <p class="col-md-9">
+        While 92% of girls believe anyone can acquire the skills of leadership, only 21% believe they currently have most of the key qualities required to be a good leader (Schoenberg, Salmond, Fleshman, 2008). 
+        <br /><br />
+        Political leadership determines the public policy of a country. Diverse political leadership ensures accurate representation of the population. In the United States, a gender gap exists in political leadership. Although women gained the right to vote 97 years ago, in federal and state politics women hold fewer than 20% of seats in congress (Pew Research Center, 2015). 
+        <br /><br />
+        Girls and women are often not viewed in society as strong leaders, not only by boys and men, but equally by women themselves. Society needs to become aware of these false perceptions of female leaders and their negative impact on political representation. 
+        <br /><br />
+        This visualization contrasts the perspectives of women, men, boys, and girls to the number of men and women in various political entities. Comparing these four viewpoints allows for a more comprehensive look at how gender and age affect the relationship between the perceptions of female leaders and the reality of the number of female leaders in politics. 
+      </p>
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Linnea Lapp</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="linnea"></a>
+    <div href="linneaLapp/" img-src="content/linneaLapp.png" class="project col-md-12">
+      <p class=" col-md-2">
+        <span class="title">Patterns of Vulnerability: Visualizing Northern Canadian Food Insecurity</span>
+      </p>
+      <p class="col-md-9">
+        Although Canada has no official measure of poverty, food insecurity (the financial and/or physical inability to access adequate food) is present in homes across the country, with a particularly severe prominence in Canada’s Northern territories of the Yukon, Northwest Territories, and Nunavut. Northern Canada’s unique geographical and social landscape make its residents especially vulnerable to food insecurity. Extreme temperatures, low population density, isolated communities, inconsistent access, and a higher Aboriginal population set Canada’s north apart. Declining physical and mental health, the deterioration of Aboriginal traditions, and a degeneration of society are at stake when food insecurity exists. 
+        <br /><br />
+        Informed through current studies, reports, initiatives, and data collection, this investigation strives to synthesize the available resources into a single visual representation. The process revealed the inconsistency and lack of granularity within publicly available data related to Northern Canadian food insecurity, as well as the many determinants which intersect to create vulnerability within communities. The final visualization breaks down the complexity of the issue into an organized narrative in order to establish a foundational knowledge of Northern Canadian food insecurity. 
+      </p>
+    </div> 
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Jacob Romer</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="jacob"></a>
+    <div href="https://github.com/visualizedata/glimpse" img-src="content/jacobRomer.png" class="project col-md-12">
+      <p class=" col-md-2">
+        <span class="title">Glimpse: You Can Only Know What You See, You Can Only Act On What You Know.</span>
+      </p>
+      <p class="col-md-9">
+        Glimpse is a Chrome extension that reveals the network of entities that watch you on the web, across time, and across space. It shows you who can track your location on the internet and in real life. 
+        <br /><br />
+        Every time you visit a website, the other party can decide whom to inform. These third parties may send you images and videos you want to see, serve you advertising you don’t want to see, or track your behavior without your knowledge. They all have one thing in common: at the moment your browser interacts with them, they know what site you’re on, what time you visited that site, and your physical location at that moment. This information can be used to build a profile, but you have no way of knowing who knows what. 
+        <br /><br />
+        Glimpse is an attempt to create legibility around your online footprint: it hooks into your browser and keeps a record of the entities that receive information about you. You can keep a record of what part of your life is exposed to whom. 
+      </p>
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Gabriella Steele</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="gabi"></a>
+    <div href="gabiSteele/" img-src="content/gabiSteele.png" class="project col-md-12">
+      <p class="col-md-2">
+        <span class="title">Visualizing the Group Attachment Based Intervention</span>
+      </p>
+      <p class="col-md-9">
+        This project was fueled by the notion that the majority of data shared within the Social Science community—specifically the field of Child Attachment—is done so using static forms of communication. Scholarly articles, grants, and research papers serve as the dominant method of distributing work. This visualization sought to challenge that status quo by creating a digital resource that portrayed data collected by The Group Attachment Based Intervention (GABI) study, a pragmatic clinical trial focused on reducing child maltreatment in vulnerable families. It was developed jointly by The New School for Social Research Center for Attachment and Einstein Albert Einstein College of Medicine’s Center for Babies, Toddlers and Families, in the South Bronx, the poorest congressional district in the United States. 
+        <br /><br />
+        The intervention targets vulnerable families at high risk of maltreatment and abuse, specifically working with children ages 0-3. One in four children in the United States experiences child maltreatment at some point in their lives. Among these, one in four victims will be under the age of three. This visualization hopes to shed light on the important work being conducted by this study and provide a unique resource that can better share psychological datasets with all stakeholders involved in the work as well as greater interested audiences. 
+      </p>
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Jaime Tanner</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="jaime"></a>
+    <div href="jaimeTanner/project.html" img-src="content/jaimeTanner.png" class="project col-md-12">
+      <p class=" col-md-2">
+        <span class="title">Taxonomic Bias: In Scientific Research & Funding</span>
+      </p>
+      <p class="col-md-9">
+        World species are declining at relatively high rates. Researchers in the fields of ecology, conservation biology, and related areas of study are working to better understand species, and the factors contributing to their loss. In generating this knowledge, the scientific community in many ways shapes conservation policy and natural resource management. However, it has been shown that certain species and taxa receive much more attention than those that may be more difficult to access or less beneficial to humans. As a result, species which may be more critical to the overall health of an ecosystem may be at risk. With so much of our conservation practices dependent on the knowledge produced by the scientific community, it is critical to address this taxonomic bias in research. 
+        <br /><br />
+        This project offers one solution to the challenge of communicating bias in organismal research. Using the publications from one major scientific journal, the visualization allows the the reader to explore animal species organized taxonomically and by number of publications where the species is mentioned. Readers can explore publications at a species level or use the sorting tools to observe trends. 
+        <br /><br />
+        This visual investigation aims to provoke the reader into questioning prevailing practices for understanding nature. Using research publications as a lens through which we can explore scientific methods of inquiry, this piece visualizes not only the species which receive the most attention from humans but also those which may be least understood. 
+      </p>
+    </div>
+
+    <!--PROJECT-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+    <h3 class="col-md-12">Jonathan Thirkield</h3>
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <a id="jon"></a>
+    <div href="jonThirkield/" img-src="content/jonThirkield.png" class="project col-md-12">
+      <p class=" col-md-2">
+        <span class="title">Visualizing Poetic Space: Mapping Dante’s Comedy</span>
+      </p>
+      <p class="col-md-9">
+        Written in the early 1300s, The Divine Comedy stands at the threshold of the Medieval and the Renaissance ages. Both its grand universal scope — Dante travels through the center of earth, up through the planets, and beyond the stars — and the intimate, vivid realism with which Dante portrays the souls he encounters, have captivated readers for seven centuries. In the Renaissance, the specificity of Dante’s geometry led figures such as Botticelli and Galileo to speculate on the exact topology of the Inferno. In the time since, artists from Bosch to Rodin to Twombly have imagined and reimagined the landscapes and populations of Hell, Purgatory, and Paradise. For poets and writers, the formal complexity, beauty, and radical inventiveness of Dante’s poetry has opened countless pathways for remaking and reconceiving the written word. This project draws inspiration specifically from Italo Calvino and Jorge Luis Borges, the great 20th century fabulists, each of whom regarded Dante as a touchstone for the visual and spatial imagination.
+        <br /><br />
+        This project seeks to extend these speculations, inspirations, and reimaginations into the emergent 21st century paradigms of knowledge generation: the three-dimensional interactive capabilities of the graphical user interface, and the n-dimensional dynamics of data transit. Built in JavaScript, using the Threejs 3D library and a MongoDB database, this speculative map of Dante’s poetic space serves as an environment for active, exploratory, deep, and collaborative reading of the poem. My central questions are: How can poetic space be visualized? And how can such a visualization lead us to new modes of reading, understanding, imagination, and expression?
+      </p>
+    </div>
+
+    <!--FOOTER-->
+
+    <div class="bottom-stripe col-md-12">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+    <div id="about">
+      <div class="row">
+
+        <div class="col-md-2 text-right">
+            <p>&nbsp;</p>
+            <a href="https://github.com/visualizedata"><img data-toggle='tooltip' title='Source' src="web/img/GitHub.png" style="width:30px"></a>
+        </div>
+
+        <div class="col-md-3">
+
+          <p><a href="http://www.newschool.edu/parsons/ms-data-visualization/">MS Data Visualization 2016</a></p>
+
+          <a href="https://github.com/compagnb">Barbara Compagnoni</a>
+          <br /> <a href="https://github.com/Justinerk2" class="no-touch">Justine Keller</a>
+          <br /> <a href="https://github.com/llapp">Linnea Lapp</a>
+          <br /> <a href="https://github.com/jacobmbr">Jacob Romer</a>
+          <br /> <a href="https://github.com/gabisteele">Gabi Steele</a>
+          <br /> <a href="https://github.com/jat3002">Jaime Tanner</a>
+          <br /> <a href="https://github.com/jthirkield">Jon Thirkield</a>
+          <p></p>
+
+        </div>
+        <div class="col-md-3">
+
+          <p><a href="http://www.newschool.edu/parsons/">Parsons School of Design</a></p>
+          <a href="http://www.newschool.edu/parsons/faculty.aspx?id=4e54-5978-4d7a-4932">Daniel Sauter, Assoc. Prof.</a>
+          <br /> <a href="https://courses.newschool.edu/courses/PGDV5200">PGDV Major Studio 2</a>
+          <p></p>
+
+        </div>
+        <div class="col-md-3">
+
+          <p><a href="http://www.newschool.edu/parsons/ms-data-visualization/">Contact</a></p>
+          <a href="http://www.newschool.edu/parsons/faculty.aspx?id=4d6a-5577-4d6a-4d7a">Aaron Hill, Director and Assist. Prof.</a>
+          <br /> <a href="http://www.newschool.edu/parsons/art-media-technology-school-amt/">Art, Media, and Technology</a>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-stripe col-md-12 marginbot-50">
+      <div class="bottom-stripe-inner"></div>
+    </div>
+
+  </div>
+  <script src="web/js/bootstrap.min.js"></script>
+  <script src="web/js/jquery.easing.min.js"></script>
+  <script src="web/js/custom.js"></script>
+</body>
+
+</html>
